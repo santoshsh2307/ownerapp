@@ -2,6 +2,8 @@ package com.nova.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,29 +12,38 @@ import javax.persistence.Table;
 public class UserDetails {
 	@Id
 	@Column(name="id")
-private long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+private Long id;
 	@Column(name="first_name")
 private String firstName;
 	@Column(name="last_name")
 private String lastName;
-	@Column(name="username")
+	@Column(name="user_name")
 private String username;
-	@Column(name="Password")
+	@Column(name="password")
 private String Password;
-	@Column(name="mail")
+	@Column(name="email")
 private String mail;
 	@Column(name="phone")
 private String phone;
 	@Column(name="gender")
-private char gender;
+private String gender;
+	@Column(name="role_id")
+private Integer roleId;
 @Column(name="created_at")
-private boolean createdAt;
+private Boolean createdAt;
 @Column(name="status")
-private boolean status;
+private Boolean status;
 @Column(name="is_deleted")
-private boolean isDeleted;
-public UserDetails(long id, String firstName, String lastName, String username, String password, String mail,
-		String phone, char gender, boolean createdAt, boolean status, boolean isDeleted) {
+private Boolean isDeleted;
+@Column(name="owner_id")
+private Long ownerId;
+public UserDetails() {
+	
+}
+public UserDetails(Long id, String firstName, String lastName, String username, String password, String mail,
+		String phone, String gender, Integer roleId, Boolean createdAt, Boolean status, Boolean isDeleted,
+		Long ownerId) {
 	super();
 	this.id = id;
 	this.firstName = firstName;
@@ -42,14 +53,16 @@ public UserDetails(long id, String firstName, String lastName, String username, 
 	this.mail = mail;
 	this.phone = phone;
 	this.gender = gender;
+	this.roleId = roleId;
 	this.createdAt = createdAt;
 	this.status = status;
 	this.isDeleted = isDeleted;
+	this.ownerId = ownerId;
 }
-public long getId() {
+public Long getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getFirstName() {
@@ -88,37 +101,48 @@ public String getPhone() {
 public void setPhone(String phone) {
 	this.phone = phone;
 }
-public char getGender() {
+public String getGender() {
 	return gender;
 }
-public void setGender(char gender) {
+public void setGender(String gender) {
 	this.gender = gender;
 }
-public boolean isCreatedAt() {
+public Integer getRoleId() {
+	return roleId;
+}
+public void setRoleId(Integer roleId) {
+	this.roleId = roleId;
+}
+public Boolean getCreatedAt() {
 	return createdAt;
 }
-public void setCreatedAt(boolean createdAt) {
+public void setCreatedAt(Boolean createdAt) {
 	this.createdAt = createdAt;
 }
-public boolean isStatus() {
+public Boolean getStatus() {
 	return status;
 }
-public void setStatus(boolean status) {
+public void setStatus(Boolean status) {
 	this.status = status;
 }
-public boolean isDeleted() {
+public Boolean getIsDeleted() {
 	return isDeleted;
 }
-public void setDeleted(boolean isDeleted) {
+public void setIsDeleted(Boolean isDeleted) {
 	this.isDeleted = isDeleted;
+}
+public Long getOwnerId() {
+	return ownerId;
+}
+public void setOwnerId(Long ownerId) {
+	this.ownerId = ownerId;
 }
 @Override
 public String toString() {
 	return "UserDetails [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-			+ ", Password=" + Password + ", mail=" + mail + ", phone=" + phone + ", gender=" + gender + ", createdAt="
-			+ createdAt + ", status=" + status + ", isDeleted=" + isDeleted + "]";
+			+ ", Password=" + Password + ", mail=" + mail + ", phone=" + phone + ", gender=" + gender + ", roleId="
+			+ roleId + ", createdAt=" + createdAt + ", status=" + status + ", isDeleted=" + isDeleted + ", ownerId="
+			+ ownerId + "]";
 }
-
-
 
 }

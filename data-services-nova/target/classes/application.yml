@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/database_schema
+    username: root
+    password: ravi007@
+    
+  #jpa:
+   # show-sql: true
+  #  hibernate:
+    #  ddl-auto: update
+ # application:
+   #  name: DATA-SERVICE
+     
+server:
+  port: 8081
+ 
+eureka:
+ instance:
+  hostname: localhost
+ client:
+   fetch-registry: true
+   register-with-eureka: false
+ service-url:
+   defaultZone: http://localhost:8081/eureka/
+  
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8082/eureka/
